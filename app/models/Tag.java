@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Tag extends Model {
 
-  public static List<Tag> tags = new LinkedList<>();
+  public static List<Tag> tags = new LinkedList<Tag>();
 
   static {
     tags.add(new Tag(1L, "lightweight", Product.findByName("paperclips")));
@@ -40,7 +40,7 @@ public class Tag extends Model {
   public Tag(Long id, String name, Collection<Product> products) {
     this.id = id;
     this.name = name;
-    this.products = new LinkedList<>(products);
+    this.products = new LinkedList<Product>(products);
     for (Product product : products) {
       product.tags.add(this);
     }
